@@ -21,6 +21,7 @@
     "babel-loader": "^6.2.0",
     "browser-sync": "^2.10.1",
     "css-loader": "^0.23.0",
+    "echarts-webpack": "^2.2.8",
     "file-loader": "^0.8.5",
     "gulp": "^3.9.0",
     "gulp-concat": "^2.6.0",
