@@ -4,9 +4,9 @@ window.Modernizr=function(a,b,c){
     function x(a){
         j.cssText=a
     }
-    function y(a,b){
+   /* function y(a,b){
         return x(prefixes.join(a+";")+(b||""))
-    }
+    }*/
     function z(a,b){
         return typeof a===b
     }

@@ -1,14 +1,13 @@
-@import url(http://fonts.googleapis.com/css?family=Playfair+Display+SC:400italic,700,900|Raleway:500|Martel+Sans:400,700);
 @font-face {
   font-weight: normal;
   font-style: normal;
-  font-family: 'codropsicons';
-  src: url("../fonts/codropsicons/codropsicons.eot");
+  font-family: 'awesomefont';
+  src: url("../fonts/font-awesome-4.3.0/fonts/fontawesome-webfont.eot");
   src:
-  url("../fonts/codropsicons/codropsicons.eot?#iefix") format("embedded-opentype"),
-  url("../fonts/codropsicons/codropsicons.woff") format("woff"),
-  url("../fonts/codropsicons/codropsicons.ttf") format("truetype"),
-  url("../fonts/codropsicons/codropsicons.svg#codropsicons") format("svg");
+  url("../fonts/font-awesome-4.3.0/fonts/fontawesome-webfont.eot?#iefix") format("embedded-opentype"),
+  url("../fonts/font-awesome-4.3.0/fonts/fontawesome-webfont.woff") format("woff"),
+  url("../fonts/font-awesome-4.3.0/fonts/fontawesome-webfont.ttf") format("truetype"),
+  url("../fonts/font-awesome-4.3.0/fonts/fontawesome-webfont.svg#awesomefont") format("svg");
 }
 *, *:after, *:before {
   -webkit-box-sizing: border-box;
@@ -28,7 +27,7 @@ body {
   color: #7b7b7b;
   font-weight: 400;
   font-size: 16px;
-  font-family: "Martel Sans", Arial, sans-serif;
+  font-family: "awesomefont", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow: hidden;
@@ -67,115 +66,24 @@ button:focus {
   width: 300px;
   max-width: 100%;
   height: 100%;
-  height: 100%;
   top: 0;
   left: 0;
   padding: 2em 1em;
 }
 
-.sidebar h1 {
+.sidebar p {
   margin: 0.75em 0 0;
-  font-size: 2em;
-  line-height: 1;
+}
+.sidebar p img {
+  border-radius: 50%;
+  width:80px;
+  height:80px;
+}
+.sidebar p h2 {
   font-family: "Playfair Display", serif;
-}
-
-.sidebar h1 span {
-  display: block;
-}
-
-/* Codrops links */
-.codrops-links {
-  position: relative;
-  display: inline-block;
-  text-align: center;
-  white-space: nowrap;
-  min-height: 45px;
-}
-
-.codrops-links::after {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 1px;
-  height: 100%;
-  background: #ddd;
-  content: '';
-  -webkit-transform: rotate3d(0, 0, 1, 22.5deg);
-  transform: rotate3d(0, 0, 1, 22.5deg);
-}
-
-.codrops-icon {
-  display: inline-block;
-  margin: 0.5em;
-  padding: 0em 0;
-  width: 1.5em;
-  text-decoration: none;
-}
-
-.codrops-icon span {
-  display: none;
-}
-
-.codrops-icon:before {
-  margin: 0 5px;
-  text-transform: none;
-  font-weight: normal;
-  font-style: normal;
-  font-variant: normal;
-  font-family: 'codropsicons';
+  font-size: 1.5em;
   line-height: 1;
-  speak: none;
 }
-
-.codrops-icon--drop:before {
-  content: "\e001";
-}
-
-.codrops-icon--prev:before {
-  content: "\e004";
-}
-
-/* Demo links */
-.codrops-demos {
-  margin: 2em 0 0;
-  font-size: 0.75em;
-}
-
-.codrops-demos a {
-  display: inline-block;
-  margin: 0 0.5em;
-}
-
-.codrops-demos a.current-demo {
-  color: #333;
-  font-weight: bold;
-}
-
-.codrops-demos a.current-demo:focus {
-  color: #aaa;
-}
-
-.related {
-  font-size: 0.85em;
-  padding-bottom: 1em;
-}
-
-.related h3 {
-  margin: 3em 0 0.5em 0;
-  font-size: 0.95em;
-}
-
-.related a {
-  display: block;
-  color: inherit;
-}
-
-.related a:hover,
-.related a:focus {
-  color: #414741;
-}
-
 /* Main content */
 .main {
   position: relative;
@@ -206,30 +114,11 @@ button:focus {
   opacity: 1;
 }
 
-/* Top bar above the grid */
-.top-bar {
-  background: #fff;
-  width: 100%;
-  line-height: 1;
-  padding: 15px 15px 10px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  align-items: center;
-}
-
-.top-bar__headline {
-  margin: 0;
-  font-size: 0.75em;
-}
 
 /* Menu button for toggling the sidebar (appears on small screen) */
 .menu-toggle {
   position: fixed;
   z-index: 100;
-  display: block;
   width: 25px;
   height: 25px;
   top: 14px;
@@ -237,8 +126,8 @@ button:focus {
   cursor: pointer;
   background: none;
   border: none;
-  display: none;
   margin: -2px 15px 0 0;
+  display: none;
 }
 
 .menu-toggle span {
@@ -249,7 +138,7 @@ button:focus {
   width: 100%;
   height: 2px;
   background-color: #81c483;
-  font-size: 0px;
+  font-size: 0;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -278,25 +167,6 @@ button:focus {
   transform: translateY(7px);
 }
 
-/* Filter/dropdown dummy on the right */
-.filter {
-  text-align: right;
-  font-size: 0.75em;
-  margin-left: auto;
-}
-
-.dropdown {
-  font-weight: bold;
-  margin-left: 5px;
-  cursor: pointer;
-  color: #81c483;
-}
-
-.dropdown::after {
-  content: '\25BC';
-  margin-left: 2px;
-  font-size: 80%;
-}
 
 /* Grid item */
 .grid__item {
@@ -318,15 +188,16 @@ button:focus {
   flex-direction: column;
   -webkit-justify-content: center;
   justify-content: center;
+
 }
 
 /* Grid item "border" */
 .grid__item::before {
   position: absolute;
   content: '';
-  top: 0px;
+  top: 0;
   right: 55px;
-  bottom: 0px;
+  bottom: 0;
   left: 55px;
   border-bottom: 1px solid rgba(74, 74, 74, 0.075);
 }
@@ -468,29 +339,13 @@ button:focus {
   display: block;
   border-radius: 50%;
   margin: 2em auto;
+  width: 80px;
+  height: 80px;
 }
 
 .meta--preview .meta__avatar {
   -webkit-filter: grayscale(50%);
   filter: grayscale(50%);
-}
-
-.grid__item:hover .meta--preview .meta__avatar,
-.grid__item:focus .meta--preview .meta__avatar {
-  -webkit-filter: none;
-  filter: none;
-}
-
-.meta__date,
-.meta__reading-time {
-  display: block;
-  float: left;
-  color: #aaa;
-}
-
-.meta__reading-time {
-  text-align: right;
-  float: right;
 }
 
 .meta__misc {
@@ -553,18 +408,6 @@ button:focus {
   -webkit-transform: scale3d(0.5, 0.5, 1);
   transform: scale3d(0.5, 0.5, 1);
   opacity: 0;
-}
-
-/* Grid footer */
-.page-meta {
-  width: 100%;
-  background: #fff;
-  width: 100%;
-  padding: 15px 15px 10px;
-  text-align: center;
-  font-size: 0.75em;
-  font-weight: bold;
-  cursor: default;
 }
 
 /* Placeholder element (dummy that gets animated when we click on an item) */
@@ -636,6 +479,7 @@ button:focus {
   padding: 60px 60px 80px 60px;
   pointer-events: none;
   font-size: 0.85em;
+  margin-top: 2em;
 }
 .content__item p {
   max-width: 1200px;
@@ -678,7 +522,6 @@ button:focus {
   margin-bottom: 20px;
 }
 .meta--full .meta__author::before {
-  content: 'by ';
   font-weight: normal;
 }
 .meta--full .meta__category {
@@ -806,7 +649,43 @@ button:focus {
   opacity: 1;
   pointer-events: auto;
 }
+.middle {
+  margin: 0.5em 0 0.5em 0;
+  width: 100%;
+  background-color: #FFFFFF;
+}
+.middle hr {
+  width:33%;
+  height: 1px;
+  background-color:rgb(129, 196, 131);
+  border: 0;
+  text-align: center;
+}
 
+.middle p {
+  position: relative;
+  background-color: transparent;
+  text-align: center;
+  margin: 0 0;
+  color: #0b97c4;
+  font-size: larger;
+}
+.footer {
+  position: relative;
+  bottom: 0;
+  width:100%;
+  margin-bottom: 0.5em;
+  background-color: transparent;
+
+}
+.footer p  {
+  width: 100%;
+  color:#CCCCCC;
+  text-align: center;
+  font-size: smaller;
+  background-color: transparent;
+
+}
 /* Viewport sizes based on column number and sidebar */
 /* 1 column */
 /* 2 columns */
@@ -885,7 +764,7 @@ button:focus {
     right: 5px;
     bottom: 5px;
     left: 5px;
-    border: 1px solid rgba(74, 74, 74, 0.075);
+    border: 1px solid rgba(74, 74, 74, 0.1);
     -webkit-transition: opacity 0.3s;
     transition: opacity 0.3s;
   }
@@ -972,7 +851,7 @@ button:focus {
     top: 0;
     right: 0;
     background: #fff;
-    border-bottom: 1px solid #f5f5f5;
+    border-bottom: 1px solid rgba(129, 196, 131, 0.5);
     width: 100vw;
     height: 50px;
     pointer-events: none;
@@ -985,10 +864,7 @@ button:focus {
   }
 }
 /* Redefine some styles for this layout */
-body {
-  background: url("../images/pexels-photo.jpeg");
 
-}
 
 .content {
   left: auto;
@@ -1020,7 +896,6 @@ body {
   -webkit-transition-delay: 0.1s;
   transition-delay: 0.1s;
 }
-
 .grid__item .category {
   -webkit-transition-delay: 0s;
   transition-delay: 0s;
@@ -1078,9 +953,9 @@ body {
 
   .meta--full {
     position: fixed;
-    width: 280px;
+    width: 300px;
     height: 100%;
-    background: #fff;
+    background: #000000;
     top: 0;
     left: 0;
     font-size: 0.85em;
@@ -1109,6 +984,7 @@ body {
     border-right: 1px solid #f5f5f5;
   }
 }
+
 @media screen and (max-width: 899px) {
   .meta--full .meta__date,
   .meta--full .meta__reading-time {
