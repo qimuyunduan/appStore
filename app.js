@@ -34,8 +34,11 @@ redisClient.on("connect",function()
 {
   console.log("Redis server has connected");
 });
+var db  = mongoose.createConnection('mongodb://127.0.0.1:27017/test');
+db.on('error', function(error) {
+    console.log(error);
+});
 
-//mongoose.connect('mongodb//localhost/test');
 
 
 
