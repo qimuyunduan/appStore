@@ -34,6 +34,11 @@
 		isAnimating = false,
 		menuCtrl = document.getElementById('menu-toggle'),
 		menuCloseCtrl = sidebarEl.querySelector('.close-button');
+
+	/**
+	 * gets the viewport width and height
+	 * based on http://responsejs.com/labs/dimensions/
+	 */
 	function getViewport( axis ) {
 		var client, inner;
 		if( axis === 'x' ) {
@@ -177,6 +182,8 @@
 				lockScroll = false;
 				window.removeEventListener( 'scroll', noscroll );
 			});
+			
+			// reset current
 			current = -1;
 		}, 25);
 	}
