@@ -1,30 +1,32 @@
 var express = require('express'),
-     path = require('path'),
+     path = require('path'),//This module contains utilities for handling and transforming file paths.
     favicon = require('serve-favicon'),
-    logger = require('morgan'),
+    logger = require('morgan'),//HTTP request logger middleware
     cookieParser = require('cookie-parser'),
     bodyParser = require('body-parser'),
     ejs = require('ejs'),
-    debug = require('debug')('http'),
+    debug = require('debug')('http'),//tiny node.js debugging utility
     redis= require('redis'),
     mongoose = require('mongoose');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var app = express();
 
-//static files directory
+//view directory
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine','ejs');
 
 app.use(favicon(__dirname + '/public/favicon.ico'));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+
 
 app.use('/', index);
 app.use('/users', users);
+
 redisClient = redis.createClient();
 redisClient.on("error",function(error)
 {
@@ -42,7 +44,7 @@ db.on('error', function(error) {
 });
 db.on('connected',function(){
     console.log("MongoDB Server has connected....")
-})
+});
 
 
 
@@ -57,7 +59,7 @@ app.use(function(req, res, next) {
 
 if (app.get('env') === 'development') {
   console.log("environment is dev..");
-  app.use(function(err, req, res, next) {
+  app.use(function(err, req, res) {
     res.status(err.status || 500);
     res.render('error', {
       message: err.message,
@@ -67,7 +69,7 @@ if (app.get('env') === 'development') {
 }
 
 
-app.use(function(err, req, res, next) {
+app.use(function(err, req, res) {
   res.status(err.status || 500);
   res.render('error', {
     message: err.message,

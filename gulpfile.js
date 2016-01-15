@@ -1,38 +1,24 @@
-/**
- * Created by 齐木云端 on 12/20/2015.
- */
-/**
- * learning-gulp - gulpfile.js
- * Created by mengdesen on 15/4/14.
- * Last modified by nieweidong on 2015/04/15
- */
 
 'use strict';
 
 var gulp = require('gulp');
-//var uglify = require('gulp-uglify');
-//var concat = require('gulp-concat');
-//var shrink = require('gulp-cssshrink');
+var uglify = require('gulp-uglify');
+var concat = require('gulp-concat');
+var shrink = require('gulp-cssshrink');
 var watch = require('gulp-watch');
 var browserSync = require('browser-sync');
-// 静态文件打包合并
-//var webpack = require('gulp-webpack');
-// 上传七牛sdn
-//var qn = require('gulp-qn');
-// MD5戳
-//var rev = require('gulp-rev');
-//var revCollector = require('gulp-rev-collector');
-//var runSequence = require('run-sequence');
+var webpack = require('gulp-webpack');
 
-//var config = require('./webpack.config');
-/*var qiniu = {
-    accessKey: '6sBCo463jJOCnBIYX__uy9avZ7C2hj_MHb-ffKAr',
-    secretKey: '3vPk7fB0HcwL5V9E2AErHuR19HM389eYqdvQcncL',
-    bucket: 'xdemo',
-    domain: 'http://7xik9a.com1.z0.glb.clouddn.com'
-};*/
+var qn = require('gulp-qn');
 
-/*gulp.task('js', function () {
+var rev = require('gulp-rev');
+var revCollector = require('gulp-rev-collector');
+var runSequence = require('run-sequence');
+
+var config = require('./webpack.config');
+
+
+gulp.task('js', function () {
     gulp.src('./js')
         .pipe(webpack(config))
         .pipe(gulp.dest('./build'));
@@ -68,21 +54,21 @@ gulp.task('publish-css', function () {
         }))
         .pipe(rev.manifest())
         .pipe(gulp.dest('./build/rev/css'));
-});*/
+});
 gulp.task('watch', function () {
     gulp.watch('./public/stylesheets/style1.css', ['browserSync']);
 
 });
 gulp.task('browserSync', function() {
     browserSync({
-        files: "./views/index.html,./public/**/.css",
+        files: "./public/index.html,./public/**/.css",
         server: {
             baseDir: "./"
         }
     });
 });
-/*gulp.task('publish-html', function () {
-    return gulp.src(['./build/rev/!**!/!*.json', './index.html'])
+gulp.task('publish-html', function () {
+    return gulp.src(['./build/rev/**/*.json', './index.html'])
         .pipe(revCollector({
             dirReplacements: {
                 'build/': ''
@@ -96,6 +82,6 @@ gulp.task('publish', function (callback) {
         ['publish-css', 'publish-js'],
         'publish-html',
         callback);
-});*/
+});
 
 
