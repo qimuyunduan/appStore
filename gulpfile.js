@@ -2,79 +2,42 @@
 'use strict';
 
 var gulp = require('gulp');
+var del = require('del');
 var uglify = require('gulp-uglify');
 var concat = require('gulp-concat');
-var shrink = require('gulp-cssshrink');
+var shrink = require('gulp-minify-css');
 var watch = require('gulp-watch');
 var browserSync = require('browser-sync');
-var webpack = require('gulp-webpack');
-
-var qn = require('gulp-qn');
-
-var rev = require('gulp-rev');
-var revCollector = require('gulp-rev-collector');
-var runSequence = require('run-sequence');
-
-var config = require('./webpack.config');
+//var webpack = require('gulp-webpack');
+//var config = require('./webpack.config');
+var rev = require('gulp-rev');////- 对文件名加MD5后缀
+var revCollector = require('gulp-rev-collector');//- 路径替换
+var runSequence = require('run-sequence');//Run a series of dependent gulp tasks in order
 
 
-gulp.task('js', function () {
-    gulp.src('./js')
-        .pipe(webpack(config))
-        .pipe(gulp.dest('./build'));
-});
 
-gulp.task('css', function () {
-    gulp.src(['./public/stylesheets/style1.css'])
-        .pipe(concat('app.css'))
-        .pipe(gulp.dest('./build'));
-});
+
 gulp.task('publish-js', function () {
-    return gulp.src(['./js'])
-        .pipe(webpack(config))
+    return gulp.src(['./public/javascripts/classie.js','./public/javascripts/main.js'])
         .pipe(uglify())
         .pipe(rev())
-        .pipe(gulp.dest('./build'))
-        .pipe(qn({
-            qiniu: qiniu,
-            prefix: 'gmap'
-        }))
+        .pipe(gulp.dest('./public/javascripts/dist'))
         .pipe(rev.manifest())
-        .pipe(gulp.dest('./build/rev/js'));
+        .pipe(gulp.dest('./public/javascripts'));
 });
 gulp.task('publish-css', function () {
-    return gulp.src(['./css/main.css', './css/view.css'])
-        .pipe(concat('app.css'))
+    return gulp.src(['./public/stylesheets/style.css'])
         .pipe(shrink())
         .pipe(rev())
-        .pipe(gulp.dest('./build'))
-        .pipe(qn({
-            qiniu: qiniu,
-            prefix: 'gmap'
-        }))
+        .pipe(gulp.dest('./public/stylesheets/'))
         .pipe(rev.manifest())
-        .pipe(gulp.dest('./build/rev/css'));
+        .pipe(gulp.dest('./public/stylesheets'));
 });
-gulp.task('watch', function () {
-    gulp.watch('./public/stylesheets/style1.css', ['browserSync']);
 
-});
-gulp.task('browserSync', function() {
-    browserSync({
-        files: "./public/index.html,./public/**/.css",
-        server: {
-            baseDir: "./"
-        }
-    });
-});
 gulp.task('publish-html', function () {
-    return gulp.src(['./build/rev/**/*.json', './index.html'])
-        .pipe(revCollector({
-            dirReplacements: {
-                'build/': ''
-            }
-        }))
-        .pipe(gulp.dest('./dist/'));
+    return gulp.src(['./public/**/*.json', './public/index.html'])
+        .pipe(revCollector())
+        .pipe(gulp.dest('./public/'));
 });
 
 gulp.task('publish', function (callback) {
@@ -83,5 +46,13 @@ gulp.task('publish', function (callback) {
         'publish-html',
         callback);
 });
-
-
+gulp.task('browserSync', function() {
+    browserSync.init({
+        proxy: "localhost:3000",
+        files: "./public/index.html,./public/!**!/.css"
+    });
+});
+gulp.task('watch', function () {
+    gulp.watch('./public/stylesheets/style.css', ['publish-css']);
+});
+gulp.task('default',['browserSync','watch']);
