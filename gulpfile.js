@@ -21,7 +21,7 @@ gulp.task('publish-js', function () {
     return gulp.src(['./public/javascripts/classie.js','./public/javascripts/main.js'])
         .pipe(uglify())
         .pipe(rev())
-        .pipe(gulp.dest('./public/javascripts/dist'))
+        .pipe(gulp.dest('./public/javascripts'))
         .pipe(rev.manifest())
         .pipe(gulp.dest('./public/javascripts'));
 });
@@ -34,7 +34,7 @@ gulp.task('publish-css', function () {
         .pipe(gulp.dest('./public/stylesheets'));
 });
 gulp.task('clean',function() {
-    del('./public/stylesheets/style-*.css');
+    del('./public/stylesheets/style-*.css','./public/javascripts/*-*.js');
 });
 gulp.task('publish-html', function () {
     return gulp.src(['./public/**/*.json', './public/index.html'])
@@ -51,11 +51,7 @@ gulp.task('publish', function (callback) {
 gulp.task('browserSync', function() {
     browserSync.init({
         proxy: "localhost:3000",
-        files: "./public/index.html,./public/**/style.css",
-        reload_delay:"5000"
+        files: "./public/index.html,./public/**/style.css"
     });
 });
-gulp.task('watch', function () {
-    gulp.watch('./public/stylesheets/style.css', ['publish']);
-});
-gulp.task('default',['watch']);
+gulp.task('default',['browserSync']);

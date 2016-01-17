@@ -374,9 +374,10 @@ button:focus {
 .footer {
   width: 100%;
     position: fixed;
-    bottom: 15px;
-  background: #fff;
-  padding: 15px 15px 10px;
+    bottom: 0;
+    background: #fff;
+    color: #00DD00;
+  padding: 15px 15px 15px;
   text-align: center;
   font-size: 0.75em;
   font-weight: normal;
