@@ -35,11 +35,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 // set app session data
-app.use(session({
+/*app.use(session({
     userID: '',
     store: new connect_redis(options),
     secret: 'keyboard cat'
-}));
+}));*/
 
 //set routes for app
 app.use('/', index);

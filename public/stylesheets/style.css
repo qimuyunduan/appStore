@@ -373,11 +373,13 @@ button:focus {
 /* Grid footer */
 .footer {
   width: 100%;
+    position: fixed;
+    bottom: 15px;
   background: #fff;
   padding: 15px 15px 10px;
   text-align: center;
   font-size: 0.75em;
-  font-weight: bold;
+  font-weight: normal;
   cursor: default;
 }
 
@@ -765,6 +767,7 @@ button:focus {
 /* Redefine some styles for this layout */
 body {
   background: #f5f5f5;
+    max-width: 1400px;
 }
 
 .content {
