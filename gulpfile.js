@@ -51,7 +51,8 @@ gulp.task('publish', function (callback) {
 gulp.task('browserSync', function() {
     browserSync.init({
         proxy: "localhost:8000",
-        files: "./public/index.html,./public/**/style.css"
+        files: "./public/index.html,./public/**/style.css",
+        browser:"chrome"
 
     });
 });

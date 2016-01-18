@@ -157,7 +157,7 @@ button:focus {
 
 /* Grid item */
 .grid__item {
-    padding: 45px 55px 30px;
+    padding: 45px 55px 45px 55px;
     position: relative;
     color: inherit;
     background:#f5f5f5 ;
@@ -175,6 +175,7 @@ button:focus {
     flex-direction: column;
     -webkit-justify-content: center;
     justify-content: center;
+    margin: 0 15px 15px 0;
 }
 
 /* Grid item "border" */
@@ -363,6 +364,7 @@ button:focus {
 
 /* Grid footer */
 .footer {
+
     padding: 15px 0 15px 0;
     text-align: center;
     font-size: 1em;
@@ -616,7 +618,10 @@ button:focus {
     .main {
         height: 100vh;
     }
+    .container{
 
+        text-align: center;
+    }
     .main {
         height: 100%;
         margin-left: 300px;
@@ -753,8 +758,8 @@ button:focus {
 }
 /* Redefine some styles for this layout */
 body {
+    text-align: center;
     background: #f5f5f5;
-    max-width: 1400px;
 }
 
 .content {
