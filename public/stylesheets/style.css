@@ -84,7 +84,6 @@ button:focus {
 .grid {
 
     position: relative;
-    border-bottom: 1px solid red;
 }
 
 /* Overlay */
@@ -374,7 +373,6 @@ button:focus {
     font-size: 1em;
     font-weight: normal;
     cursor: default;
-    border: 1px solid blue;
    /* margin-top: -60px;*/
 }
 
@@ -680,24 +678,27 @@ button:focus {
         width: 33.333%;
     }
 }
-/*@media screen and (min-width: 1500px) {
-    !* 4 columns *!
+@media screen and (min-width: 1500px) {
+    /* 4 columns */
     .grid__item {
         width: 33.333%;
+        min-height: 400px;
     }
 }
 @media screen and (min-width: 1800px) {
-    !* 5 columns *!
+    /* 5 columns */
     .grid__item {
         width: 33.333%;
+        height: 500px;
     }
 }
 @media screen and (min-width: 2100px) {
-    !* 6 columns *!
+    /* 6 columns */
     .grid__item {
         width: 33.333%;
+        height: 600px;
     }
-}*/
+}
 /* small screen changes for sidebar (it becomes an off-canvas menu) */
 @media screen and (max-width: 599px) {
     .sidebar {
